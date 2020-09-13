@@ -26,6 +26,7 @@ from urllib.request import urlopen
 from nsetools import Nse 
 from yahoo_fin import stock_info
 import yfinance as yf
+from googletrans import Translator
 
 ###########################################################################################################
 
@@ -173,6 +174,12 @@ def send_message(message,numbers):
     print(response.text)
 
 ###########################################################################################################
+
+def Translate_Text(text,lang_code):
+  trans = Translator()
+  t = trans.translate(text, dest=lang_code)
+  print(f'{t.text}')
+  speak(f'{t.text}')
 
 
 #main function in infinite loop
@@ -436,6 +443,15 @@ if __name__ == "__main__":
             send_message(message,numbers)
             speak("Message sent")
 
+        elif 'translate' in query and 'english' in query :
+            text=input("Enter text to translate: ")
+            Translate_Text(text,"en")  
+
+        elif 'translate' in query :
+            text=input("Enter text to translate: ")
+            lang_code=input("Enter Language Code: ")
+            Translate_Text(text,lang_code)   
+
 
 
 ###################################################################################################################################
@@ -457,17 +473,17 @@ if __name__ == "__main__":
 
 '''
   Andro uses various external APIs, get your API keys from the following websites:
-  News        from  newsapi.org         in line 97              # can also change number of messages to send and news topic 
-  Message     from  fast2sms.com        in line 168
-  Calculator  from  wolframalpha.com    in line 304
-  Weather     from  openweathermap.org  in line 354
-  Query       from  wolframalpha.com    in line 380
-  IFTTT       from  ifttt.com           in line 421,425 and 429  # will also have to configure applets in IFTTT.com
+  News        from  newsapi.org                       # can also change number of messages to send and news topic 
+  Message     from  fast2sms.com        
+  Calculator  from  wolframalpha.com    
+  Weather     from  openweathermap.org  
+  Query       from  wolframalpha.com    
+  IFTTT       from  ifttt.com                          # will also have to configure applets in IFTTT.com
 
 
-  Change email ID and its password in line 87 and 88 
-  Change file path in line 144 and index in line 147
-  Change file path in line 412
-  Change trigger words in lines 421,425 and 429 (The "Event Name" in webhooks)
+  Change email ID and its password
+  Change file path 
+  Change file path 
+  Change trigger words (The "Event Name" in webhooks)
 
 '''
