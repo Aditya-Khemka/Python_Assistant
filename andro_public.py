@@ -465,7 +465,6 @@ if __name__ == "__main__":
 ##                GeekForGeeks   (Coding/Learning platform)                                                                      ##
 ##                Stack Overflow (Paradise for software developers)                                                              ##
 ##                                                                                                                               ##
-##             Source code available on github (check the link in description)                                                   ##
 ##            '''                                                                                                                ##
 ###################################################################################################################################         
 
